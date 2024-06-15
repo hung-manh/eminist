@@ -8,8 +8,6 @@ import base64
 from PIL import Image
 from model.eminist import EMNISTNet, predict_char
 
-# Mute tensorflow debugging information on console
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 app = Flask(__name__)
 def load_model(model_path):
@@ -25,6 +23,7 @@ def load_model(model_path):
     model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
     model.eval()  # Set the model to evaluation mode
     return model
+model = load_model('bin/parameters.pt')
 
 @app.route("/")
 def index():
@@ -69,18 +68,18 @@ def predict():
 
     return jsonify(response)
 
-if __name__ == '__main__':
-    # Parse optional arguments
-    parser = argparse.ArgumentParser(description='A webapp for testing models generated from training.py on the EMNIST dataset')
-    parser.add_argument('--bin', type=str, default='bin/parameters.pt', help='model pt file')
-    parser.add_argument('--host', type=str, default='0.0.0.0', help='The host to run the flask server on')
-    parser.add_argument('--port', type=int, default=5000, help='The port to run the flask server on')
-    args = parser.parse_args()
+# if __name__ == '__main__':
+#     # Parse optional arguments
+#     parser = argparse.ArgumentParser(description='A webapp for testing models generated from training.py on the EMNIST dataset')
+#     parser.add_argument('--bin', type=str, default='bin/parameters.pt', help='model pt file')
+#     parser.add_argument('--host', type=str, default='0.0.0.0', help='The host to run the flask server on')
+#     parser.add_argument('--port', type=int, default=5000, help='The port to run the flask server on')
+#     args = parser.parse_args()
 
-    # Overhead
-    model = load_model(args.bin)
-    # # mapping = pickle.load(open(f'{args.bin}/mapping.p', 'rb'))
-    # model.eval()
-    # print(model)
+#     # Overhead
+#     model = load_model(args.bin)
+#     # # mapping = pickle.load(open(f'{args.bin}/mapping.p', 'rb'))
+#     # model.eval()
+#     # print(model)
 
-    app.run(host=args.host, port=args.port)
+#     app.run(host=args.host, port=args.port)
