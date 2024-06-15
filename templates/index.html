@@ -30,7 +30,7 @@
 	    <script type="text/javascript">
 	   		$(".predict_button").click(function(){
 	   			$('#result').text('  Predicting...');
-	   			var $SCRIPT_ROOT = "{{request.script_root|tojson|safe}}";
+	   			var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
 	   			var canvasObj = document.getElementById("canvas");
 	   			var img = canvasObj.toDataURL('image/png');
 	   			$.ajax({
