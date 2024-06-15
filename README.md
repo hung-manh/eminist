@@ -1,8 +1,7 @@
 EMNIST
 =====
 
-![](https://raw.githubusercontent.com/Coopss/EMNIST/master/static/preview.gif)
-
+![](https://raw.githubusercontent.com/hung-manh/eminist/main/static/preview.gif)
 
 ##### Description
 
@@ -22,24 +21,24 @@ This project was intended to explore the properties of convolution neural networ
     * Optimize hyperparameters
     * Add a noise (gaussian or likewise) layer to input in an attempt to boost accuracy
   * Move webapp to a host service like PythonAnywhere
-
+<!-- 
 ## Environment
 
-#### Anaconda: 
+#### Anaconda:  -->
 
 ## Usage
-#### [training.ipynb](https://github.com/Coopss/EMNIST/blob/master/training.py)
+#### [training.ipynb](https://github.com/hung-manh/eminist/blob/38ac17c03b0ffcc7876524639a2a45139e7200e0/training/emnist-pytorch.ipynb)
 A training program for classifying the EMNIST dataset
 
 
-#### [server.py](https://github.com/Coopss/EMNIST/blob/master/server.py)
-A webapp for testing models generated from [training.py](https://github.com/Coopss/EMNIST/blob/master/training.py) on the EMNIST dataset
+#### [server.py](https://github.com/hung-manh/eminist/blob/38ac17c03b0ffcc7876524639a2a45139e7200e0/server.py)
+A webapp for testing models generated from [training.ipynb](https://github.com/hung-manh/eminist/blob/38ac17c03b0ffcc7876524639a2a45139e7200e0/training/emnist-pytorch.ipynb) on the EMNIST dataset
 
     usage: server.py [-h] [--bin BIN] [--host HOST] [--port PORT]
 
 ##### Optional Arguments:
 
     -h, --help   show this help message and exit
-    --bin BIN    Directory to the bin containing the model yaml and model h5 files
+    --bin BIN    Model path pt or pth
     --host HOST  The host to run the flask server on
     --port PORT  The port to run the flask server on
